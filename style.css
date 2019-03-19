@@ -19,10 +19,12 @@ header {
 
 #game{
     background-color: #f5f6f8;
+    padding: 5%;
 }
 
 #results {
     background-color: #d1d2d4;
+    padding: 5%;
 }
 
 button {
@@ -37,26 +39,30 @@ section {
 
 #section-a {
     height: 300px;
-    width: 90%;
+    width: 100%;
 }
 
 #section-b {
     height: 500px;
-    width: 90%;
+    width: 100%;
 }
 
 #section-c {
     height: 400px;
-    width: 90%;
+    width: 100%;
 }
 
 #section-d{
     height: 200px;
-    width: 90%;
+    width: 100%;
     margin-top:20px;
 }
 
 #section-e {
     height: 200px;
-    width: 90%;
+    width: 100%;
+}
+
+h1{
+    background-color: #404042
 }
