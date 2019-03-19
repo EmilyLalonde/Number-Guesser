@@ -1,0 +1,62 @@
+/* font-family: 'Open Sans', sans-serif; */
+/* header color: #404042 */
+/* light grey background color: #f5f6f8 */
+/* dark grey background color #d1d2d4 */
+/* darker grey buttons: #606060 */
+/* lighter grey buttons #d1d2d4 */
+/* pink #ec458b */
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+}
+
+header {
+    max-height: 150px;
+    background: #404042;
+    color: white;
+}
+
+#game{
+    background-color: #f5f6f8;
+}
+
+#results {
+    background-color: #d1d2d4;
+}
+
+button {
+    background-color: #606060;
+    height: 10px;
+    width: 30px;
+}
+
+section {
+    background-color: white;
+}
+
+#section-a {
+    height: 300px;
+    width: 90%;
+}
+
+#section-b {
+    height: 500px;
+    width: 90%;
+}
+
+#section-c {
+    height: 400px;
+    width: 90%;
+}
+
+#section-d{
+    height: 200px;
+    width: 90%;
+    margin-top:20px;
+}
+
+#section-e {
+    height: 200px;
+    width: 90%;
+}
