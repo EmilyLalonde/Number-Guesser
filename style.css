@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    height: 150px;
+    height: 60px;
     background: #404042;
     color: white;
 }
@@ -67,7 +67,9 @@ h1{
     margin: 0;
     color: #ec458b;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
+    font-size: 20px;
+    letter-spacing: 1px;
 }
 
 .subtitle {
@@ -79,8 +81,8 @@ h1{
   
 .subtitle:after, .subtitle:before {
     content: '';
-    width: 8%;
-    height: 2px;
+    width: 5%;
+    height: 1px;
     background: white;
     margin: 0 10px;
   }
@@ -107,5 +109,6 @@ button{
 
 h5{
     text-align: center;
-    font-size: 12px;
+    font-size: 6px;
+    margin: 0;
 }
