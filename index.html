@@ -1,94 +1,105 @@
 <!DOCTYPE html>
 <html lang=en>
-    <head>
-        <meta charset= "UTF-8">
-        <meta name="viewport" content="width=device-width,  initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <link rel=stylesheet href="style.css">
-        <title>Number Guesser Game</title>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <body>
-            <header id="game-title" class="flex">
-                <h1>NumberGuesser</h1>
-                <p class="subtitle fancy"><span>Ultimate Challenger Edition</span></p>
-            </header>
-<!--Main Area-->
-            <main id="main">
-                <!--Section A-->
-                <article id="game">
-                <section id= "section-a" class="flex">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <link rel=stylesheet href="style.css">
+    <title>Number Guesser Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+<body>
+    <header id="game-title" class="flex">
+        <h1>NUMBERGUESSER</h1>
+        <h5 class="subtitle">Ultimate Challenger Edition</h5>
+    </header>
+    <!--Main Area-->
+    <main id="main">
+        <!--Section A-->
+        <article id="game">
+            <section id="section-a" class="flex">
                 <div class="range">
                     <h2>Set Range</h2>
                     <form>
+                        Min Range <br>
                         <input type="text" name="min-range">
+                        Max Range <br>
                         <input type="text" name="max-range">
+                        <button></button>
                     </form>
-                    <button></button>
-                </div>
-                </section>
-                <!--Section B-->
-                <section id="section-b" class="flex">
-                    <div class="challangers">
-                        <p>The Current Range is <b><u>1</u></b> to <b>><u>100</u></b></p>
-                        <h2><b>Challanger 1</b></h2>
-                        <form class="challenger">
-                            <input>
-                            <input>
-                        </form>
-                        <h2><b>Challanger 2</b></h2>
-                        <form class="challenger">
-                            <input>
-                            <input>
-                        </form>
-                        <button></button>
-                        <button></button>
-                        <button></button>
-                    </div>
-                </section>
-                <!--Section C-->
-                <section id="section-c" class="flex">
-                    <div class="score">
-                        <h2><b>Latest Score</b></h2>
-                        <h3>Challenger 1 Name</h3>
-                        <p>current guess</p>
-                        <h4>97</h4>
-                        <p>tha's too high</p>
-                        <div class="line-break"></div>
-                        <h3>Challenger 2 Name</h3>
-                        <p>current guess</p>
-                        <h4>3</h4>
-                        <p>that's too low</p>
-                    </div>
-                </section>
-                </article>
-                <!--Section D-->
-                <article id="results">
-                <section id="section-d" class="flex">
-                    <div class="cards">
-                        <h3>Challanger 1 Name</h3>
-                        <p>vs</p>
-                        <h3>Challanger 2 Name</h3>
-                        <div class= "line-break"></div>
-                        <h4>Challanger 2 Name</h4>
-                        <h5>WINNER</h5>
-                        <div class= "line-break"></div>
-                    </div>
-                </section>
-                <!--Section E-->
-                <section id="section-e" class="flex">
-                        <div class="cards">
-                            <h3>Challanger 1 Name</h3>
-                            <p>vs</p>
-                            <h3>Challanger 2 Name</h3>
-                            <div class= "line-break"></div>
-                            <h4>Challanger 2 Name</h4>
-                            <h5>WINNER</h5>
-                            <div class= "line-break"></div>
-                        </div>
-                    </section>
-                    </article>
-            </main>
 
-        </body>
-    </head>
+                </div>
+            </section>
+            <!--Section B-->
+            <section id="section-b" class="flex">
+                <div class="challengers">
+                    <p>The Current Range is <b><u>1</u></b> to <b>><u>100</u></b></p>
+                    
+                    <form class="challenger">
+                            <h2><b>Challenger 1</b></h2>
+                        Name <br>
+                        <input type="text" name="name">
+                        Guess <br>
+                        <input type="text" name="guess">
+                    <h2><b>Challenger 2</b></h2>
+                    <form class="challenger">
+                        Name <br>
+                        <input type="text" name="name">
+                        Guess <br>
+                        <input type="text" name="guess">
+                        <button id="challenge-button"></button>
+                    <button id="challenge-button"></button>
+                    <button id="challenge-button"></button>
+                    </form>
+                    
+                </div>
+            </section>
+            <!--Section C-->
+            <section id="section-c" class="flex">
+                <div class="score">
+                    <h2><b>Latest Score</b></h2>
+                    <h3>Challenger 1 Name</h3>
+                    <p>current guess</p>
+                    <h4>97</h4>
+                    <p>tha's too high</p>
+                    <div class="line-break"></div>
+                    <h3>Challenger 2 Name</h3>
+                    <p>current guess</p>
+                    <h4>3</h4>
+                    <p>that's too low</p>
+                </div>
+            </section>
+        </article>
+        <!--Section D-->
+        <article id="results">
+            <section id="section-d" class="flex">
+                <div class="cards">
+                    <h3>Challenger 1 Name</h3>
+                    <p>vs</p>
+                    <h3>Challenger 2 Name</h3>
+                    <div class="line-break"></div>
+                    <h4>Challenger 2 Name</h4>
+                    <h5>WINNER</h5>
+                    <div class="line-break"></div>
+                </div>
+            </section>
+            <!--Section E-->
+            <section id="section-e" class="flex">
+                <div class="cards">
+                    <h3>Challenger 1 Name</h3>
+                    <p>vs</p>
+                    <h3>Challenger 2 Name</h3>
+                    <div class="line-break"></div>
+                    <h4>Challenger 2 Name</h4>
+                    <h5>WINNER</h5>
+                    <div class="line-break"></div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+</body>
+</head>
+
 </html>
