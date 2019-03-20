@@ -115,8 +115,7 @@ p {
 button{
     height: 30px;
     width: 90%; 
-    margin:10px auto;
-    border-radius: 20%;
+    margin:10px auto;           
     display: flex;
     justify-content: space-between;
     flex-direction: column;
