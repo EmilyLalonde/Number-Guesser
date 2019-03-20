@@ -25,6 +25,14 @@ header {
 #results {
     background-color: #d1d2d4;
     padding-top:20px;
+
+}
+
+button {
+    background-color: #606060;
+    height: 10px;
+    width: 30px;
+
 }
 
 section {
