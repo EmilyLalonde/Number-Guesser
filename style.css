@@ -33,13 +33,13 @@ section {
 }
 
 #section-a {
-    height: 200px;
+    height: 250px;
     width: 100%;
     position: relative;
 }
 
 #section-b {
-    height: 500px;
+    height: 600px;
     width: 100%;
 }
 
@@ -79,8 +79,10 @@ form{
     justify-content: space-between;
     flex-direction: column;
     width: 100%;
-    font-size: 14px;
+    font-size: 18px;
     color: #606060;
+    font-family: "Open Sans", sans-serif;
+    padding: 10px 0 0 10px;
 }   
 
 input{
@@ -104,6 +106,7 @@ h1{
 h2{
     font-size: 16px;
     color:#606060;
+    padding: 10px 0 0 10px;
 }
 
 h5{
@@ -115,6 +118,7 @@ h5{
 p {
     font-size: 16px;
     color: #606060;
+    padding: 10px 0 0 10px;
 }
 
 button{
@@ -124,12 +128,17 @@ button{
     margin:10px auto;           
     background-color:#d1d2d4;
     color: white;
+    font-family: "Open Sans", sans-serif;
 }
 
 .update-button{
     width: 30%;
     margin: 10px 0;
     max-width: 100px;
+}
+
+.top-button{
+    background-color: #606060;
 }
 
 
@@ -141,7 +150,7 @@ body {
 }
 
 #scorebox {
-  height:605px;
+  height:650px;
   width:100%;
   border: 1px gray solid;
 }
@@ -214,7 +223,7 @@ body {
 #win-card{
   padding:5px 10px;
   width:85%;
-  height: 200px;
+  height: 275px;
   border: 2px #6e6e6e solid;
   margin:20px auto;
 }
