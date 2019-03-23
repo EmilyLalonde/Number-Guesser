@@ -1,129 +1,85 @@
 <!DOCTYPE html>
-<html lang=en>
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,  initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-  <link rel=stylesheet href="style.css">
-  <title>Number Guesser Game</title>
+  <title>Number Guesser Game | Welcome</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 </head>
-
 <body>
-  <header id="game-title" class="flex">
-    <h1><b>NUMBER</b>GUESSER</h1>
-    <h5 class="subtitle">Ultimate Challenger Edition</h5>
+  <header>
+    <div id="header-text">
+      <span class="h1"><strong>NUMBER</strong><span id="thinHeader">GUESSER</span></span>
+      <h6 id="header-subtitle">
+        <div class="kebab"></div>
+          ULTIMATE CHALLENGER EDITION
+        <div class="kebab"></div>
+      </h6>
+    </div>
   </header>
-  <!--Main Area-->
-  <main id="main">
-    <!--Section A-->
-    <article id="game">
-      <section id="section-a" class="flex">
-        <div class="range">
-          <h2>Set Range</h2>
-          <form>
-            Min Range <br>
-            <input type="text" name="min-range">
-            Max Range <br>
-            <input type="text" name="max-range">
-            <button class="update-button">Update</button>
-          </form>
+  <main id="game-board">
+    <section class="game-board-card" id="set-range-card">
+      <strong id="range-card-header">Set Range</strong>
+      <form id="range-form">
+        <label>Min Range</label><input type:text id="min-range-input" value=""/>
+        <label>Max Range</label><input type:text id="max-range-input" value=""/>
+        <button type="button" id="update-button">UPDATE</button>
+      </form>
+    </section>
+    <section class="game-board-card" id="challenger-game-card">
+      <p id="challenger-range-header">The Current Range is <strong id="min-range">1</strong> to <strong id="max-range">100</strong></p>
+      <form id="challenger-form">
+        <strong class="challenger-one" id="player-one-header">Challenger 1</strong>
+        <label>Name</label><input type:text id="player-one-input" value=""/>
+        <label>Guess</label><input type:number id="guess-one-input" value=""/>
+        <strong class="challenger-two" id="player-two-header">Challenger 2</strong>
+        <label>Name</label><input type:text id="player-two-input" value=""/>
+        <label>Guess</label><input type:number id="guess-two-input" value=""/>
+        <div class="button-container">
+          <button class="game-buttons" id="submit-button">SUBMIT GUESS</button>
+          <button class="game-buttons" id="reset-button">RESET GAME</button>
+          <button class="game-buttons" id="clear-button">CLEAR GAME</button>
         </div>
-      </section>
-      <!--Section B-->
-      <section id="section-b" class="flex">
-        <div class="challangers">
-          <p>The Current Range is <b><u>1</u></b> to <b><u>100</u></b></p>
-          <form class="challenger">
-            <h2>Challenger 1</h2>
-            Name <br>
-            <input type="text" name="name">
-            Guess <br>
-            <input type="text" name="guess">
-            <h2>Challenger 2</h2>
-            <form class="challenger">
-              Name <br>
-              <input type="text" name="name">
-              Guess <br>
-              <input type="text" name="guess">
-              <button class="top-button">SUBMIT GUESS</button>
-              <button class="button">RESET GAME</button>
-              <button class="button">CLEAR GAME</button>
-            </form>
-        </div>
-      </section>
-      <!--Section C-->
-      <section id="scorebox">
-        <div id="score-header">Latest Score</div>
-        <div class=flexbox>
-          <div class=container>
-            <div class="score-box">
-              <p class=player>Challenger 1 Name</p>
-              <p class="text">current guess</p>
-              <p class="guessNum">97</p>
-              <p class="text">that's too high</p>
-            </div>
-          </div>
-          <div class=border></div>
-          <div class=container>
-            <div class=score-box>
-              <p class=player>Challenger 2 Name</p>
-              <p class="text">current guess</p>
-              <p class="guessNum">3</p>
-              <p class="text">that's too low</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </article>
-    <!--Section D-->
-    <article id="results">
-      <section id="win-card">
-        <div id="matchup-box">
-          <p class="sub-player">CHALLENGER 1 NAME</p>
-          <p id="versus">VS</p>
-          <p class="sub-player">CHALLENGER 2 NAME</p>
-        </div>
-        <div class="cborder"></div>
-        <div id="victory-box">
-          <p class="super-player">CHALLENGER 2 NAME</p>
-          <p id="winner">WINNER</p>
-        </div>
-        <div class="cborder"></div>
-        <div id="footer"><span><b>47</b> Guesses</span><span><b>1.35</b> Minutes</span><span>X</span></div>
-      </section>
-      <section id="win-card">
-        <div id="matchup-box">
-          <p class="sub-player">CHALLENGER 1 NAME</p>
-          <p id="versus">VS</p>
-          <p class="sub-player">CHALLENGER 2 NAME</p>
-        </div>
-        <div class="cborder"></div>
-        <div id="victory-box">
-          <p class="super-player">CHALLENGER 2 NAME</p>
-          <p id="winner">WINNER</p>
-        </div>
-        <div class="cborder"></div>
-        <div id="footer"><span><b>47</b> Guesses</span><span><b>1.35</b> Minutes</span><span>X</span></div>
-      </section>
-      <section id="win-card">
-        <div id="matchup-box">
-          <p class="sub-player">CHALLENGER 1 NAME</p>
-          <p id="versus">VS</p>
-          <p class="sub-player">CHALLENGER 2 NAME</p>
-        </div>
-        <div class="cborder"></div>
-        <div id="victory-box">
-          <p class="super-player">CHALLENGER 2 NAME</p>
-          <p id="winner">WINNER</p>
-        </div>
-        <div class="cborder"></div>
-        <div id="footer"><span><b>47</b> Guesses</span><span><b>1.35</b> Minutes</span><span>X</span></div>
-      </section>
-    </article>
+      </form>
+    </section>
+    <section class="game-board-card" id="score-box">
+      <div id="score-box-header">Latest Score</div>
+      <div class="score-card-container">
+        <div class="challenger-one" id="score-box-player-one">Challenger 1 Name</div>
+        <div class="current-guess">current guess</div>
+        <div class="player-score-card" id="player-one-score">97</div>
+        <div class="compass" id="compass-one">that's too high</div>
+      </div>
+      <div class="border" id="score-border"></div>
+      <div class="score-card-container">
+        <div class="challenger-two" id="score-box-player-two">Challenger 2 Name</div>
+        <div class="current-guess">current guess</div>
+        <div class="player-score-card" id="player-two-score">3</div>
+        <div class="compass" id="compass-two">that's too low</div>
+      </div>
+    </section>
+  </main>
+  <main id="scoreboard">
+    <section class="win-card">
+      <div class="versus-container">
+        <span class="challenger-one">CHALLENGER 1 NAME</span>
+        <p class="versus">VS</p>
+        <span class="challenger-two">CHALLENGER 2 NAME</span>
+      </div>
+     <div class="c-border"></div>
+     <div class="winner-container">
+       <strong class="challenger-winner">CHALLENGER 1 NAME</strong>
+       <span class="winner">WINNER</span>
+     </div>
+     <div class="c-border"></div>
+     <footer>
+       <span class="guesses"><strong class=guessNum>960</strong>GUESSES</span>
+       <span class="time"><strong class="minutes">3.5</strong> MINUTES</span>
+       <button type="button" class="x-button">&#10005;</button>
+     </footer>
+   </section> 
   </main>
 
 </body>
-
 </html>
