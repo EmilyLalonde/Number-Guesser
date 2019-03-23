@@ -1,249 +1,243 @@
-/* font-family: 'Open Sans', sans-serif; */
-/* header color: #404042 */
-/* light grey background color: #f5f6f8 */
-/* dark grey background color #d1d2d4 */
-/* darker grey buttons: #606060 */
-/* lighter grey buttons #d1d2d4 */
-/* pink #ec458b */
+/* Global */
 
 body {
-    font-family: "Open Sans", sans-serif;
-    margin: 0;
+  font-family:"Open Sans", sans-serif;
+  margin:0;
+  background-color:#d0d2d3;
 }
+
+#game-board {
+  background-color:#f7f7f7;
+  padding:10px 0 10px;
+}
+
+#scoreboard {
+  background-color:#d0d2d3;
+  padding:10px 0 10px;
+}
+
+.game-board-card {
+  background-color:white;
+  width:90%;
+  margin:10px auto;
+  border:1px #d0d2d3 solid;
+  color:#6e6e6e;
+}
+
+button {
+  color:white;
+  background-color:#6e6e6e;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+input {
+  border:1px #d0d2d3 solid;
+  height:25px;
+  width:100%;
+  margin:0 auto;
+}
+
+label {
+  margin-top:5px;
+}
+
+form {
+  margin:35px 12px 10px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.challenger-one,
+.challenger-two {
+  font-weight:700;
+}
+
+/* Header */
 
 header {
-    height: 70px;
-    background: #404042;
-    color: white;
+  min-height:70px;
+  padding-top:10px;
+  background-color:#404041;
+  color:#dd1972;
 }
 
-#game{
-    background-color: #f5f6f8;
-    padding: 5%;
-}
-
-#results {
-    background-color: #d1d2d4;
-    padding-top:20px;
-
-}
-
- section {
-    background-color: white;
-}
-
-.subtitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-  }
-  
-.subtitle:after, .subtitle:before {
-    content: '';
-    width: 8%;
-    height: 1px;
-    background: white;
-    margin: 0 10px;
-  }
-
-form{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    width: 90%;
-    font-size: 18px;
-    color: #606060;
-    font-family: "Open Sans", sans-serif;
-    margin: auto;
-}   
-
-input{
-    height: 30px;
-    width:90%;
-}
-
-h1{
-    margin: 0;
-    color: #ec458b;
-    text-align: center;
-    padding: 5px;
-    font-weight: 100;
-    font-size: 30px;
-    letter-spacing: 1px;
-    display: flex;
-    justify-content: center;
-}
-
-h2{
-    font-size: 16px;
-    font-weight: 900;
-    color:#606060;
-    padding: 10px 0 0 10px;
-}
-
-h5{
-    text-align: center;
-    font-size: 12px;
-    margin: 0;
-}
-
-p {
-    font-size: 16px;
-    color: #606060;
-    padding: 10px 0 0 10px;
-}
-
-button{
-    border-radius: 30px;
-    height: 30px;
-    width: 90%; 
-    margin:10px auto;           
-    background-color:#d1d2d4;
-    color: white;
-    font-family: "Open Sans", sans-serif;
-}
-
-.update-button{
-    width: 30%;
-    margin: 10px 0;
-    max-width: 100px;
-}
-
-.top-button{
-    background-color: #606060;
-}
-
-
-/* Section C ::Scorecard */ 
-
-body {
-  font-family: Verdana, Geneva, sans-serif
-
-}
-
-#scorebox {
-  height:650px;
-  width:100%;
-  border: 1px gray solid;
-}
-
-#score-header {
-  margin:12px 0 0 12px;
-  font-weight:bold;
-  font-size:23px;
-}
-
-
-.flexbox {
-  display:flex;
-  flex-direction: column;
-}
-
-
-
-.container {
-  height:285px;
-  width:100%;
+header .h1,
+header h5 {
   margin:0;
 }
 
+#header-text {
+  width:75%;
+  margin:auto;
+  text-align:center
+}
 
+#header-subtitle {
+  color:#fff;
+  font-weight:300;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  margin:0;
 
+}
 
+#thinHeader {
+  font-weight:100px;
+}
 
-.score-box {
-  margin:20px auto;
+.h1 {
+  font-size:2em;
+}
+
+.kebab {
+  width:18%;
+  border:1px white solid;
+  margin:auto;
+}
+
+/*Set Range */
+
+#set-range-card {
+  position:relative;
+}
+
+#range-card-header {
+  position:absolute;
+  top:5px;
+  left:8px;
+}
+
+form {
+  margin:35px 12px 10px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+#update-button {
+  margin:15px 0 0 0;
+  height:30px;
+  width:30%;
+}
+
+/* Main Challenger Card */ 
+#challenger-form {
+  margin-top:0;
+}
+
+#min-range,
+#max-range {
+  text-decoration:underline;
+}
+
+#player-one-header,
+#player-two-header {
+  margin-top:20px;
+}
+
+#challenger-range-header {
+  margin:10px 0 0 12px;
+}
+
+.button-container {
+  width:100%;
+  margin-top:15px;
+  display:flex;
+  flex-direction:column;
+}
+
+.game-buttons {
+  margin:5px auto;
+  width:100%;
+  height:30px;
+}
+
+/* Latest Score & Results Card */ 
+
+.score-card-container {
   text-align:center;
 }
 
-.score-box p {
-  margin:0;
+#score-box-header {
+  margin:10px 10px;
+  font-weight:700;
 }
 
-
-
-
-
-.player {
-  font-weight: bold; 
-  font-size: 20px;
+#score-box-player-one,
+#score-box-player-two {
+  margin-bottom:-5px;
 }
 
-.text {
-  font-size:22px;
+.current-guess {
   font-weight:100;
 }
 
-.guessNum {
-  font-size: 145px;
-  color:#dd1972;
-  font-weight:bold;
+.player-score-card {
+  font-size:100px;
+  font-weight:700;
+  color:#f74d9b;
+  margin-top:-15px;
 }
 
-
-.border {
-  background-color:black;
-  position:relative;
-  height:1px;
-  width:80%;
-  margin:0 auto;
-
+.compass {
+  font-weight:100;
+  margin:-15px 0 15px;
 }
 
-/*Section D: Challenger Card*/
-
-#win-card{
-  padding:5px 10px;
-  width:85%;
-  height: 275px;
-  border: 2px #6e6e6e solid;
-  margin:20px auto;
+#score-border {
+  width:90%;
+  border:1px #d0d2d3 solid;
+  margin:15px auto;
 }
 
-#matchup-box {
+/* WIN CARD */ 
+.win-card {
+  text-align:center;
+  background-color:white;
+  color:#6e6e6e;
+  border:1px #6e6e6e solid;
+  width:90%;
+  margin:10px auto;
+}
+
+.c-border {
+  width:90%;
+  border:1px #d0d2d3 solid;
+  margin:15px auto;
+}
+
+.versus-container,
+.winner-container {
   display:flex;
   flex-direction:column;
-  align-items:center;
+  margin:10px 0;
 }
 
-.sub-player {
+p.versus {
   margin:0;
-  font-weight: 700
 }
 
-#versus {
-  margin:5px 0;
-  font-size:12px;
-  font-weight:300;
+strong.challenger-winner {
+  font-size:25px;
+  font-weight:900;
 }
 
-#victory-box {
+span.winner {
+  font-size:30px;
+  font-weight:100;
+  margin:-5px 0 -5px 0;
+}
+
+footer {
   display:flex;
-  flex-direction:column;
-  align-items:center;
+  justify-content:space-between;
+  margin:-10px 10px 10px;
 }
 
-.super-player {
-  font-size:24px;
-  margin:0;
-  font-weight: 700;
-}
-
-#winner {
-  margin:1px 0 25px 0;
-  font-size:22px;
-  font-weight: 300;
-}
-
-#footer {
-  display:flex;
-  justify-content:space-between
-}
-
-.cborder {
-  background:black;
-  height:1px;
-  width:95%;
-  margin:11px auto;
+a {
+  text-decoration:none;
+  color:inherit;
 }
