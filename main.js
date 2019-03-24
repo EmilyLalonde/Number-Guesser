@@ -85,6 +85,26 @@ function startGame(x,xx,y,yy) {
   }
 }
 
+function createWinCard(x) {
+  target section .scoreboard in html;
+  insert scorecard via innerHTML;
+}
+
+function noContest() {
+  target .compass in html; 
+  puts "tied! no contest"
+}
+
+
+
+
+
+
+
+
+
+
+
 // -- Event Listeners
 
 updateButton.addEventListener('click', setRange)
