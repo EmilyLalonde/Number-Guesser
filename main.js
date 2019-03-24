@@ -27,10 +27,17 @@ var playerOneGuess = document.querySelector('#guess-one-input');
 var playerTwoGuess = document.querySelector('#guess-two-input');
 
 function RandomNum(x,y) {
+ vinton-work
   console.log(x);
   console.log(y);
   magicNum = Math.floor(Math.random() * (y - x + 1) + x);
   console.log(magicNum);
+ HEAD
+  magicNumber = Math.floor(Math.random() * (y - x + 1) + x);
+
+  magicNum = Math.floor(Math.random() * (y - x + 1) + x);
+ 38be7d1bfa41aeb38533a65cf6f9ac5855a6af54
+ master
 }
 
 function setRange() {
