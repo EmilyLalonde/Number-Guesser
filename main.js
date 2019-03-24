@@ -16,7 +16,7 @@ var resetButton = document.querySelector('#reset-button');
 var magicNumber;
 
 function RandomNum(x,y) {
-  magicNumber = Math.floor(Math.random() * (y - x + 1) + x;
+  magicNumber = Math.floor(Math.random() * (y - x + 1) + x);
 }
 
 
