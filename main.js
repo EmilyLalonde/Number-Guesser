@@ -34,8 +34,8 @@ function RandomNum(x,y) {
 }
 
 function setRange() {
-  var xx = minRangeInput.value;
-  var yy = maxRangeInput.value;
+  var xx = parseInt(minRangeInput.value);
+  var yy = parseInt(maxRangeInput.value);
   RandomNum(xx,yy);
   setMinRange.innerText = minRangeInput.value;
   setMaxRange.innerText = maxRangeInput.value;
@@ -85,15 +85,15 @@ function startGame(x,xx,y,yy) {
   }
 }
 
-function createWinCard(x) {
-  target section .scoreboard in html;
-  insert scorecard via innerHTML;
-}
+// function createWinCard(x) {
+//   target section .scoreboard in html;
+//   insert scorecard via innerHTML;
+// }
 
-function noContest() {
-  target .compass in html; 
-  puts "tied! no contest"
-}
+// function noContest() {
+//   target .compass in html; 
+//   puts "tied! no contest"
+// }
 
 
 
