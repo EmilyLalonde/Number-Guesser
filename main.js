@@ -34,11 +34,10 @@ function RandomNum(x,y) {
 }
 
 function setRange() {
-  var xx = minRangeInput.value;
   var regex = /^[0-9]+$/;
+  var xx = minRangeInput.value;
   var numberCheckerMin = xx.match(regex);
   var yy = maxRangeInput.value;
-  var regex = /^[0-9]+$/;
   var numberCheckerMax = yy.match(regex);
   RandomNum(xx,yy);
   setMinRange.innerText = numberCheckerMin;
@@ -84,6 +83,16 @@ function startGame(x,xx,y,yy) {
     noContest();
   }
 }
+// function guessInput() {
+// var guessInputTwo = numberCheckerMin;
+// var regex = /^[0-9]+$/;
+// var guessChecker1 = guessInput1.match(regex);
+// var guessInputTwo = numberCheckerMax;
+// var regex = /^[0-9]+$/;
+// var guessChecker2 = guessInputTwo(regex);
+// RandomNum(xx,yy);
+// playerOneResult.innerText = guessChecker1;
+// playerTwoResult.innerText = guessChecker2;
 
 // -- Event Listeners
 
