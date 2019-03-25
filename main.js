@@ -27,27 +27,22 @@ var playerOneGuess = document.querySelector('#guess-one-input');
 var playerTwoGuess = document.querySelector('#guess-two-input');
 
 function RandomNum(x,y) {
- vinton-work
-  console.log(x);
-  console.log(y);
   magicNum = Math.floor(Math.random() * (y - x + 1) + x);
-  console.log(magicNum);
- HEAD
   magicNumber = Math.floor(Math.random() * (y - x + 1) + x);
 
   magicNum = Math.floor(Math.random() * (y - x + 1) + x);
- 38be7d1bfa41aeb38533a65cf6f9ac5855a6af54
- master
 }
 
 function setRange() {
   var xx = minRangeInput.value;
+  var regex = /^[0-9]+$/;
+  var numberCheckerMin = xx.match(regex);
   var yy = maxRangeInput.value;
+  var regex = /^[0-9]+$/;
+  var numberCheckerMax = yy.match(regex);
   RandomNum(xx,yy);
-  setMinRange.innerText = minRangeInput.value;
-  setMaxRange.innerText = maxRangeInput.value;
-  console.log(xx,yy);
-  console.log(magicNum);
+  setMinRange.innerText = numberCheckerMin;
+  setMaxRange.innerText = numberCheckerMax;
 }
 
 function clearInputs() {
@@ -67,9 +62,7 @@ function startGame(x,xx,y,yy) {
   };
   playerOneResult.innerText = xx;
   playerTwoResult.innerText = yy;
-  console.log(magicNum);
   if (parseInt(xx) < magicNum) {
-    console.log("xx if working");
     playerOneErrorMessage.innerText = "that's too low";
   } else if (parseInt(xx) > magicNum) {
     playerOneErrorMessage.innerText = "that's too high";
@@ -124,7 +117,6 @@ resetButton.addEventListener('click', function() {
   RandomNum(1,100);
   console.log(magicNum);
 })
-
 
 
 
