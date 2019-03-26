@@ -41,7 +41,7 @@ function RandomNum(x,y) {
 
 function setRange() {
   var integerMin = parseInt(minRangeInput.value);
-  var integerMax = parseInt(maxRangeInput.value)
+  var integerMax = parseInt(maxRangeInput.value);
   var regex = /^[0-9]+$/;
   var xx = minRangeInput.value;
   var numberCheckerMin = xx.match(regex);
@@ -50,8 +50,8 @@ function setRange() {
   RandomNum(integerMin,integerMax);
   setMinRange.innerText = numberCheckerMin;
   setMaxRange.innerText = numberCheckerMax;
-  minRangeErrorMessage();
-  maxRangeErrorMessage();
+  // minRangeErrorMessage();
+  // maxRangeErrorMessage();
   console.log('work', magicNum)
 }
 
@@ -97,7 +97,7 @@ function startGame(x,xx,y,yy) {
 
 function minRangeErrorMessage() {
   console.log('function firing!!')
-  if (minRangeInput.value > maxRangeInput.value) {
+  if (parseInt(minRangeInput.value) > parseInt(maxRangeInput.value) ){
     minRangeError.innerText = 'Error: Minimum needs to be less than maximum!';
   } else {
     minRangeError.innerText = '';
@@ -106,7 +106,7 @@ function minRangeErrorMessage() {
 
 function maxRangeErrorMessage() {
   console.log('function firing!!')
-  if (minRangeInput.value > maxRangeInput.value) {
+  if (parseInt(minRangeInput.value) > (maxRangeInput.value) ){
     maxRangeError.innerText = 'Error: Maximum needs to be more than minimum!';
   } else {
     maxRangeError.innerText = ''; 
@@ -114,25 +114,24 @@ function maxRangeErrorMessage() {
 }
 
 function outsideRangeOne() {
-  debugger;
-  if (playerOneGuess.value < minRangeInput.value){
+  if (parseInt(playerOneGuess.value) < parseInt(minRangeInput.value) ){
     playerOneGuessOutside.innerText = 'Error: Number must be within range!';
   }else {
     playerOneGuessOutside.innerText = '';
   }
-  if (playerOneGuess.value > maxRangeInput.value){
+  if (parseInt(playerOneGuess.value) > parseInt(maxRangeInput.value) ){
     playerOneGuessOutside.innerText = 'Error: Number must be within range!';
   }else 
   playerOneGuessOutside.innerText = '';
 }
 
 function outsideRangeTwo() {
-  if (playerTwoGuess.value < minRangeInput.value){
+  if (parseInt(playerTwoGuess.value) < parseInt(minRangeInput.value) ){
     playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
   }else {
     playerTwoGuessOutside.innerText = '';
   }
-  if (playerTwoGuess.value > maxRangeInput.value){
+  if (parseInt(playerTwoGuess.value) > parseInt(maxRangeInput.value) ){
     playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
   }else 
   playerTwoGuessOutside.innerText = '';
