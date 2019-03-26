@@ -25,7 +25,9 @@
       <strong id="range-card-header">Set Range</strong>
       <form id="range-form">
         <label>Min Range</label><input type:text id="min-range-input"/>
+        <p class= "min-range-error-message"></p>
         <label>Max Range</label><input type:text id="max-range-input"/>
+        <p class= "max-range-error-message"></p>
         <button type="button" id="update-button">UPDATE</button>
       </form>
     </section>
@@ -34,10 +36,10 @@
       <form id="challenger-form">
         <strong class="challenger-one" id="player-one-header">Challenger 1</strong>
         <label>Name</label><input type:text id="player-one-input" value=""/>
-        <label>Guess</label><input type:number id="guess-one-input" value=""/>
+        <label>Guess</label><input type=number id="guess-one-input" value=""/>
         <strong class="challenger-two" id="player-two-header">Challenger 2</strong>
-        <label>Name</label><input type:text id="player-two-input" value=""/>
-        <label>Guess</label><input type:number id="guess-two-input" value=""/>
+        <label>Name</label><input type: text id="player-two-input" value=""/>
+        <label>Guess</label><input type=number id="guess-two-input" value=""/>
         <div class="button-container">
           <button type="button" class="game-buttons" id="submit-button">SUBMIT GUESS</button>
           <button type="button" class="game-buttons" id="reset-button">RESET GAME</button>
@@ -51,14 +53,14 @@
         <div class="challenger-one" id="score-box-player-one">Challenger 1 Name</div>
         <div class="current-guess">current guess</div>
         <div class="player-score-card" id="player-one-score">00</div>
-        <div class="compass" id="compass-one">&#9878;</div>
+        <div class="compass" id="compass-one"></div>
       </div>
       <div class="border" id="score-border"></div>
       <div class="score-card-container">
         <div class="challenger-two" id="score-box-player-two">Challenger 2 Name</div>
         <div class="current-guess">current guess</div>
         <div class="player-score-card" id="player-two-score">00</div>
-        <div class="compass" id="compass-two">&#9878;</div>
+        <div class="compass" id="compass-two"></div>
       </div>
     </section>
   </main>

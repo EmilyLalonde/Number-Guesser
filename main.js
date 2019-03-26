@@ -26,9 +26,13 @@ var playerTwoInput = document.querySelector('#player-two-input');
 var playerOneGuess = document.querySelector('#guess-one-input');
 var playerTwoGuess = document.querySelector('#guess-two-input');
 
+var minRangeError = document.querySelector(".min-range-error-message");
+var maxRangeError = document.querySelector(".max-range-error-message");
+
 function RandomNum(x,y) {
   magicNum = Math.floor(Math.random() * (y - x + 1) + x);
- 
+  console.log('hello', magicNum);
+}
 
 function setRange() {
   var xx = parseInt(minRangeInput.value);
@@ -37,6 +41,8 @@ function setRange() {
   console.log(magicNum);
   setMinRange.innerText = numberCheckerMin;
   setMaxRange.innerText = numberCheckerMax;
+  minRangeErrorMessage();
+  maxRangeErrorMessage();
 }
 
 function clearInputs() {
@@ -78,16 +84,7 @@ function startGame(x,xx,y,yy) {
     noContest();
   }
 }
-// function guessInput() {
-// var guessInputTwo = numberCheckerMin;
-// var regex = /^[0-9]+$/;
-// var guessChecker1 = guessInput1.match(regex);
-// var guessInputTwo = numberCheckerMax;
-// var regex = /^[0-9]+$/;
-// var guessChecker2 = guessInputTwo(regex);
-// RandomNum(xx,yy);
-// playerOneResult.innerText = guessChecker1;
-// playerTwoResult.innerText = guessChecker2;
+
 
 // function createWinCard(x) {
 //   target section .scoreboard in html;
@@ -101,15 +98,30 @@ function startGame(x,xx,y,yy) {
 
 
 
-
-
-
-
-
-
-
-
 // -- Event Listeners
+
+
+function minRangeErrorMessage() {
+  console.log('function firing!!')
+  if (minRangeInput.value > maxRangeInput.value) {
+    minRangeError.innerText = 'Error: Minimum needs to be less than maximum!';
+  } else {
+    minRangeError.innerText = '';
+  }
+}
+
+function maxRangeErrorMessage() {
+  console.log('function firing!!')
+  if (minRangeInput.value > maxRangeInput.value) {
+    maxRangeError.innerText = 'Error: Maximum needs to be more than minimum!';
+  } else {
+    maxRangeError.innerText = ''; 
+  }
+}
+
+
+// // -- Event Listeners
+
 
 updateButton.addEventListener('click', setRange)
 
