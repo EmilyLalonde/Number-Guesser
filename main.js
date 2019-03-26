@@ -35,15 +35,40 @@ function RandomNum(x,y) {
 }
 
 function setRange() {
-  var xx = parseInt(minRangeInput.value);
-  var yy = parseInt(maxRangeInput.value);
-  RandomNum(xx,yy);
+  var integerMin = parseInt(minRangeInput.value);
+  var integerMax = parseInt(maxRangeInput.value)
+  var xx = minRangeInput.value;
+  var yy = maxRangeInput.value;
+  var regex = /^[0-9]+$/;
+  var numberCheckerMin = xx.match(regex);
+  var numberCheckerMax = yy.match(regex);
+  RandomNum(integerMin,integerMax);
   console.log(magicNum);
-  setMinRange.innerText = numberCheckerMin;
-  setMaxRange.innerText = numberCheckerMax;
+  setMinRange.innerText = xx;
+  setMaxRange.innerText = yy;
   minRangeErrorMessage();
   maxRangeErrorMessage();
+  console.log(magicNum);
 }
+
+function minRangeErrorMessage() {
+  console.log('function firing!!')
+  if (minRangeInput.value > maxRangeInput.value) {
+    minRangeError.innerText = 'Error: Minimum needs to be less than maximum!';
+  } else {
+    minRangeError.innerText = '';
+  }
+}
+
+function maxRangeErrorMessage() {
+  console.log('function firing!!')
+  if (minRangeInput.value > maxRangeInput.value) {
+    maxRangeError.innerText = 'Error: Maximum needs to be more than minimum!';
+  } else {
+    maxRangeError.innerText = ''; 
+  }
+}
+
 
 function clearInputs() {
   for (i = 0; i < document.querySelectorAll('form').length; i++) {
@@ -52,8 +77,8 @@ function clearInputs() {
 }
 
 function startGame(p1input,p1guess,p2input,p2guess) {
-  var playerOneErrorMessage = document.querySelector('#compass-one');
-  var playerTwoErrorMessage = document.querySelector('#compass-two');
+  var playerOneCompass = document.querySelector('#compass-one');
+  var playerTwoCompass = document.querySelector('#compass-two');
   for (i = 0; i < challengerOneTags.length; i++) {
     challengerOneTags[i].innerText = p1input;
   };
@@ -63,24 +88,24 @@ function startGame(p1input,p1guess,p2input,p2guess) {
   playerOneResult.innerText = p1guess;
   playerTwoResult.innerText = p2guess;
   if (parseInt(p1guess) < magicNum) {
-    playerOneErrorMessage.innerText = "that's too low";
+    playerOneCompass.innerText = "that's too low";
   } else if (parseInt(p1guess) > magicNum) {
-    playerOneErrorMessage.innerText = "that's too high";
+    playerOneCompass.innerText = "that's too high";
   } else if (parseInt(p1guess) === magicNum) {
-    playerOneErrorMessage.innerText = "BOOM!";
+    playerOneCompass.innerText = "BOOM!";
   };
-  if (parseInt(yy) < magicNum) {
-    playerTwoErrorMessage.innerText = "that's too low";
+  if (parseInt(p2guess) < magicNum) {
+    playerTwoCompass.innerText = "that's too low";
   } else if (parseInt(p2guess) > magicNum) {
-    playerTwoErrorMessage.innerText = "that's too high";
+    playerTwoCompass.innerText = "that's too high";
   } else if (parseInt(p2guess) === magicNum) {
-    playerTwoErrorMessage.innerText = "BOOM!";
+    playerTwoCompass.innerText = "BOOM!";
   };
-  if (playerOneErrorMessage.innerText == "BOOM!") {
+  if (playerOneCompass.innerText == "BOOM!") {
     createWinCard(playerOneInput.value);
-  } else if (playerTwoErrorMessage.innerText == "BOOM!") {
+  } else if (playerTwoCompass.innerText == "BOOM!") {
     createWinCard(playerTwoInput.value);
-  } else if (playerOneErrorMessage.innerText == "BOOM!" && playerTwoErrorMessage.innerText == "BOOM!") {
+  } else if (playerOneCompass.innerText == "BOOM!" && playerTwoCompass.innerText == "BOOM!") {
     noContest();
   }
 }
@@ -108,29 +133,6 @@ function startGame(p1input,p1guess,p2input,p2guess) {
 //   target .compass in html; 
 //   puts "tied! no contest"
 // }
-
-
-
-// -- Event Listeners
-
-
-function minRangeErrorMessage() {
-  console.log('function firing!!')
-  if (minRangeInput.value > maxRangeInput.value) {
-    minRangeError.innerText = 'Error: Minimum needs to be less than maximum!';
-  } else {
-    minRangeError.innerText = '';
-  }
-}
-
-function maxRangeErrorMessage() {
-  console.log('function firing!!')
-  if (minRangeInput.value > maxRangeInput.value) {
-    maxRangeError.innerText = 'Error: Maximum needs to be more than minimum!';
-  } else {
-    maxRangeError.innerText = ''; 
-  }
-}
 
 
 // // -- Event Listeners
