@@ -58,7 +58,7 @@ function setRange() {
 
 function minRangeErrorMessage() {
   console.log('function firing!!')
-  if (minRangeInput.value > maxRangeInput.value) {
+  if (parseInt(minRangeInput.value) > parseInt(maxRangeInput.value) ) {
     minRangeError.innerText = 'Error: Minimum needs to be less than maximum!';
   } else {
     minRangeError.innerText = '';
@@ -67,7 +67,7 @@ function minRangeErrorMessage() {
 
 function maxRangeErrorMessage() {
   console.log('function firing!!')
-  if (minRangeInput.value > maxRangeInput.value) {
+  if (parseInt(minRangeInput.value) > parseInt(maxRangeInput.value) ){
     maxRangeError.innerText = 'Error: Maximum needs to be more than minimum!';
   } else {
     maxRangeError.innerText = ''; 
@@ -115,29 +115,6 @@ function startGame(p1input,p1guess,p2input,p2guess) {
   }
 }
 
-
-//input text test
-
-
-
-
-
-
-
-
-
-
-
-
-// function createWinCard(x) {
-//   target section .scoreboard in html;
-//   insert scorecard via innerHTML;
-// }
-
-// function noContest() {
-//   target .compass in html; 
-//   puts "tied! no contest"
-// }
 
 function outsideRangeOne() {
     var pOneGuess = parseInt(playerOneGuess.value);
