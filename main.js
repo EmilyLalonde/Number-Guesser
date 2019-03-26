@@ -34,7 +34,6 @@ var playerTwoGuessOutside = document.querySelector(".player-two-guess-outside");
 
 function RandomNum(x,y) {
   // magicNum = Math.floor(Math.random() * (y - x + 1) + x);
-  
   magicNum = Math.floor((Math.random() * y) + x);
   console.log('hello', magicNum);
 }
@@ -44,55 +43,17 @@ function setRange() {
   var integerMax = parseInt(maxRangeInput.value)
   var regex = /^[0-9]+$/;
   var xx = minRangeInput.value;
-  var numberCheckerMin = xx.match(regex);
   var yy = maxRangeInput.value;
+  var regex = /^[0-9]+$/;
+  var numberCheckerMin = xx.match(regex);
   var numberCheckerMax = yy.match(regex);
   RandomNum(integerMin,integerMax);
-  setMinRange.innerText = numberCheckerMin;
-  setMaxRange.innerText = numberCheckerMax;
+  console.log(magicNum);
+  setMinRange.innerText = xx;
+  setMaxRange.innerText = yy;
   minRangeErrorMessage();
   maxRangeErrorMessage();
-  console.log('work', magicNum)
-}
-
-function clearInputs() {
-  for (i = 0; i < document.querySelectorAll('form').length; i++) {
-    document.querySelectorAll('form')[i].reset();
-  }
-}
-
-function startGame(x,xx,y,yy) {
-  var playerOneErrorMessage = document.querySelector('#compass-one');
-  var playerTwoErrorMessage = document.querySelector('#compass-two');
-  for (i = 0; i < challengerOneTags.length; i++) {
-    challengerOneTags[i].innerText = x;
-  };
-  for (i = 0; i < challengerTwoTags.length; i++) {
-    challengerTwoTags[i].innerText = y;
-  };
-  playerOneResult.innerText = xx;
-  playerTwoResult.innerText = yy;
-  if (parseInt(xx) < magicNum) {
-    playerOneErrorMessage.innerText = "that's too low";
-  } else if (parseInt(xx) > magicNum) {
-    playerOneErrorMessage.innerText = "that's too high";
-  } else if (parseInt(xx) === magicNum) {
-    playerOneErrorMessage.innerText = "BOOM!";
-  };
-  if (parseInt(yy) < magicNum) {
-    playerTwoErrorMessage.innerText = "that's too low";
-  } else if (parseInt(yy) > magicNum) {
-    playerTwoErrorMessage.innerText = "that's too high";
-  } else if (parseInt(yy) === magicNum) {
-    playerTwoErrorMessage.innerText = "BOOM!";
-  };
-  if (playerOneErrorMessage.innerText == "BOOM!") {
-    createWinCard(playerOneInput.value);
-  } else if (playerTwoErrorMessage.innerText == "BOOM!") {
-    createWinCard(playerTwoInput.value);
-  } else if (playerOneErrorMessage.innerText == "BOOM!" && playerTwoErrorMessage.innerText == "BOOM!") {
-    noContest();
-  }
+  console.log(magicNum);
 }
 
 function minRangeErrorMessage() {
@@ -113,32 +74,95 @@ function maxRangeErrorMessage() {
   }
 }
 
+
+function clearInputs() {
+  for (i = 0; i < document.querySelectorAll('form').length; i++) {
+    document.querySelectorAll('form')[i].reset();
+  }
+}
+
+function startGame(p1input,p1guess,p2input,p2guess) {
+  var playerOneCompass = document.querySelector('#compass-one');
+  var playerTwoCompass = document.querySelector('#compass-two');
+  for (i = 0; i < challengerOneTags.length; i++) {
+    challengerOneTags[i].innerText = p1input;
+  };
+  for (i = 0; i < challengerTwoTags.length; i++) {
+    challengerTwoTags[i].innerText = p2input;
+  };
+  playerOneResult.innerText = p1guess;
+  playerTwoResult.innerText = p2guess;
+  if (parseInt(p1guess) < magicNum) {
+    playerOneCompass.innerText = "that's too low";
+  } else if (parseInt(p1guess) > magicNum) {
+    playerOneCompass.innerText = "that's too high";
+  } else if (parseInt(p1guess) === magicNum) {
+    playerOneCompass.innerText = "BOOM!";
+  };
+  if (parseInt(p2guess) < magicNum) {
+    playerTwoCompass.innerText = "that's too low";
+  } else if (parseInt(p2guess) > magicNum) {
+    playerTwoCompass.innerText = "that's too high";
+  } else if (parseInt(p2guess) === magicNum) {
+    playerTwoCompass.innerText = "BOOM!";
+  };
+  if (playerOneCompass.innerText == "BOOM!") {
+    createWinCard(playerOneInput.value);
+  } else if (playerTwoCompass.innerText == "BOOM!") {
+    createWinCard(playerTwoInput.value);
+  } else if (playerOneCompass.innerText == "BOOM!" && playerTwoCompass.innerText == "BOOM!") {
+    noContest();
+  }
+}
+
+
+//input text test
+
+
+
+
+
+
+
+
+
+
+
+
+// function createWinCard(x) {
+//   target section .scoreboard in html;
+//   insert scorecard via innerHTML;
+// }
+
+// function noContest() {
+//   target .compass in html; 
+//   puts "tied! no contest"
+// }
+
 function outsideRangeOne() {
-  debugger;
-  if (playerOneGuess.value < minRangeInput.value){
+    var pOneGuess = parseInt(playerOneGuess.value);
+    var minInputInt = parseInt(minRangeInput.value);
+    var maxInputInt = parseInt(maxRangeInput.value);
+  if (pOneGuess < minInputInt || pOneGuess > maxInputInt){
     playerOneGuessOutside.innerText = 'Error: Number must be within range!';
   }else {
     playerOneGuessOutside.innerText = '';
   }
-  if (playerOneGuess.value > maxRangeInput.value){
-    playerOneGuessOutside.innerText = 'Error: Number must be within range!';
-  }else 
-  playerOneGuessOutside.innerText = '';
 }
 
 function outsideRangeTwo() {
-  if (playerTwoGuess.value < minRangeInput.value){
+  var pTwoGuess = parseInt(playerTwoGuess.value);
+    var minInputInt = parseInt(minRangeInput.value);
+    var maxInputInt = parseInt(maxRangeInput.value);
+  if (pTwoGuess < minInputInt || pTwoGuess > maxInputInt){
     playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
   }else {
     playerTwoGuessOutside.innerText = '';
   }
-  if (playerTwoGuess.value > maxRangeInput.value){
-    playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
-  }else 
-  playerTwoGuessOutside.innerText = '';
 }
 
 // // -- Event Listeners
+
 
 updateButton.addEventListener('click', setRange)
 
