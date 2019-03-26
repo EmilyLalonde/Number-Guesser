@@ -51,29 +51,29 @@ function clearInputs() {
   }
 }
 
-function startGame(x,xx,y,yy) {
+function startGame(p1input,p1guess,p2input,p2guess) {
   var playerOneErrorMessage = document.querySelector('#compass-one');
   var playerTwoErrorMessage = document.querySelector('#compass-two');
   for (i = 0; i < challengerOneTags.length; i++) {
-    challengerOneTags[i].innerText = x;
+    challengerOneTags[i].innerText = p1input;
   };
   for (i = 0; i < challengerTwoTags.length; i++) {
-    challengerTwoTags[i].innerText = y;
+    challengerTwoTags[i].innerText = p2input;
   };
-  playerOneResult.innerText = xx;
-  playerTwoResult.innerText = yy;
-  if (parseInt(xx) < magicNum) {
+  playerOneResult.innerText = p1guess;
+  playerTwoResult.innerText = p2guess;
+  if (parseInt(p1guess) < magicNum) {
     playerOneErrorMessage.innerText = "that's too low";
-  } else if (parseInt(xx) > magicNum) {
+  } else if (parseInt(p1guess) > magicNum) {
     playerOneErrorMessage.innerText = "that's too high";
-  } else if (parseInt(xx) === magicNum) {
+  } else if (parseInt(p1guess) === magicNum) {
     playerOneErrorMessage.innerText = "BOOM!";
   };
   if (parseInt(yy) < magicNum) {
     playerTwoErrorMessage.innerText = "that's too low";
-  } else if (parseInt(yy) > magicNum) {
+  } else if (parseInt(p2guess) > magicNum) {
     playerTwoErrorMessage.innerText = "that's too high";
-  } else if (parseInt(yy) === magicNum) {
+  } else if (parseInt(p2guess) === magicNum) {
     playerTwoErrorMessage.innerText = "BOOM!";
   };
   if (playerOneErrorMessage.innerText == "BOOM!") {
@@ -84,6 +84,19 @@ function startGame(x,xx,y,yy) {
     noContest();
   }
 }
+
+
+//input text test
+
+
+
+
+
+
+
+
+
+
 
 
 // function createWinCard(x) {
