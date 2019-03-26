@@ -29,29 +29,30 @@ var playerTwoGuess = document.querySelector('#guess-two-input');
 var minRangeError = document.querySelector(".min-range-error-message");
 var maxRangeError = document.querySelector(".max-range-error-message");
 
-var playerOneGuessOutside = document.querySelector(".player-one-guess-outside")
-var playerTwoGuessOutside = document.querySelector(".player-two-guess-outside")
+var playerOneGuessOutside = document.querySelector(".player-one-guess-outside");
+var playerTwoGuessOutside = document.querySelector(".player-two-guess-outside");
 
 function RandomNum(x,y) {
-  magicNum = Math.floor(Math.random() * (y - x + 1) + x);
-  magicNumber = Math.floor(Math.random() * (y - x + 1) + x);
-
   // magicNum = Math.floor(Math.random() * (y - x + 1) + x);
-  // magicNum = Math.floor((Math.random() * y) + x);
+  
+  magicNum = Math.floor((Math.random() * y) + x);
   console.log('hello', magicNum);
 }
 
 function setRange() {
+  var integerMin = parseInt(minRangeInput.value);
+  var integerMax = parseInt(maxRangeInput.value)
   var regex = /^[0-9]+$/;
   var xx = minRangeInput.value;
   var numberCheckerMin = xx.match(regex);
   var yy = maxRangeInput.value;
   var numberCheckerMax = yy.match(regex);
-  RandomNum(xx,yy);
+  RandomNum(integerMin,integerMax);
   setMinRange.innerText = numberCheckerMin;
   setMaxRange.innerText = numberCheckerMax;
   minRangeErrorMessage();
   maxRangeErrorMessage();
+  console.log('work', magicNum)
 }
 
 function clearInputs() {
@@ -113,6 +114,7 @@ function maxRangeErrorMessage() {
 }
 
 function outsideRangeOne() {
+  debugger;
   if (playerOneGuess.value < minRangeInput.value){
     playerOneGuessOutside.innerText = 'Error: Number must be within range!';
   }else {
@@ -120,7 +122,7 @@ function outsideRangeOne() {
   }
   if (playerOneGuess.value > maxRangeInput.value){
     playerOneGuessOutside.innerText = 'Error: Number must be within range!';
-  }else
+  }else 
   playerOneGuessOutside.innerText = '';
 }
 
@@ -132,7 +134,7 @@ function outsideRangeTwo() {
   }
   if (playerTwoGuess.value > maxRangeInput.value){
     playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
-  }else
+  }else 
   playerTwoGuessOutside.innerText = '';
 }
 
@@ -169,8 +171,5 @@ resetButton.addEventListener('click', function() {
   clearInputs();
   RandomNum(1,100);
   console.log(magicNum);
-})
-
-
-
+  })
 
