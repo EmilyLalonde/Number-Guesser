@@ -29,12 +29,15 @@ var playerTwoGuess = document.querySelector('#guess-two-input');
 var minRangeError = document.querySelector(".min-range-error-message");
 var maxRangeError = document.querySelector(".max-range-error-message");
 
+var playerOneGuessOutside = document.querySelector(".player-one-guess-outside")
+var playerTwoGuessOutside = document.querySelector(".player-two-guess-outside")
+
 function RandomNum(x,y) {
-  // magicNum = Math.floor(Math.random() * (y - x + 1) + x);
-  // magicNumber = Math.floor(Math.random() * (y - x + 1) + x);
+  magicNum = Math.floor(Math.random() * (y - x + 1) + x);
+  magicNumber = Math.floor(Math.random() * (y - x + 1) + x);
 
   // magicNum = Math.floor(Math.random() * (y - x + 1) + x);
-  magicNum = Math.floor((Math.random() * y) + x);
+  // magicNum = Math.floor((Math.random() * y) + x);
   console.log('hello', magicNum);
 }
 
@@ -109,6 +112,29 @@ function maxRangeErrorMessage() {
   }
 }
 
+function outsideRangeOne() {
+  if (playerOneGuess.value < minRangeInput.value){
+    playerOneGuessOutside.innerText = 'Error: Number must be within range!';
+  }else {
+    playerOneGuessOutside.innerText = '';
+  }
+  if (playerOneGuess.value > maxRangeInput.value){
+    playerOneGuessOutside.innerText = 'Error: Number must be within range!';
+  }else
+  playerOneGuessOutside.innerText = '';
+}
+
+function outsideRangeTwo() {
+  if (playerTwoGuess.value < minRangeInput.value){
+    playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
+  }else {
+    playerTwoGuessOutside.innerText = '';
+  }
+  if (playerTwoGuess.value > maxRangeInput.value){
+    playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
+  }else
+  playerTwoGuessOutside.innerText = '';
+}
 
 // // -- Event Listeners
 
@@ -117,6 +143,8 @@ updateButton.addEventListener('click', setRange)
 submitButton.addEventListener('click', function() {
   console.log("submit button pressed");
   startGame(playerOneInput.value, playerOneGuess.value, playerTwoInput.value, playerTwoGuess.value);
+  outsideRangeOne();
+  outsideRangeTwo();
 })
 
 clearButton.addEventListener('click', function() {
