@@ -29,14 +29,19 @@ var playerTwoGuess = document.querySelector('#guess-two-input');
 var minRangeError = document.querySelector(".min-range-error-message");
 var maxRangeError = document.querySelector(".max-range-error-message");
 
+var playerOneGuessOutside = document.querySelector(".player-one-guess-outside");
+var playerTwoGuessOutside = document.querySelector(".player-two-guess-outside");
+
 function RandomNum(x,y) {
-  magicNum = Math.floor(Math.random() * (y - x + 1) + x);
+  // magicNum = Math.floor(Math.random() * (y - x + 1) + x);
+  magicNum = Math.floor((Math.random() * y) + x);
   console.log('hello', magicNum);
 }
 
 function setRange() {
   var integerMin = parseInt(minRangeInput.value);
   var integerMax = parseInt(maxRangeInput.value)
+  var regex = /^[0-9]+$/;
   var xx = minRangeInput.value;
   var yy = maxRangeInput.value;
   var regex = /^[0-9]+$/;
@@ -134,6 +139,27 @@ function startGame(p1input,p1guess,p2input,p2guess) {
 //   puts "tied! no contest"
 // }
 
+function outsideRangeOne() {
+    var pOneGuess = parseInt(playerOneGuess.value);
+    var minInputInt = parseInt(minRangeInput.value);
+    var maxInputInt = parseInt(maxRangeInput.value);
+  if (pOneGuess < minInputInt || pOneGuess > maxInputInt){
+    playerOneGuessOutside.innerText = 'Error: Number must be within range!';
+  }else {
+    playerOneGuessOutside.innerText = '';
+  }
+}
+
+function outsideRangeTwo() {
+  var pTwoGuess = parseInt(playerTwoGuess.value);
+    var minInputInt = parseInt(minRangeInput.value);
+    var maxInputInt = parseInt(maxRangeInput.value);
+  if (pTwoGuess < minInputInt || pTwoGuess > maxInputInt){
+    playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
+  }else {
+    playerTwoGuessOutside.innerText = '';
+  }
+}
 
 // // -- Event Listeners
 
@@ -143,6 +169,8 @@ updateButton.addEventListener('click', setRange)
 submitButton.addEventListener('click', function() {
   console.log("submit button pressed");
   startGame(playerOneInput.value, playerOneGuess.value, playerTwoInput.value, playerTwoGuess.value);
+  outsideRangeOne();
+  outsideRangeTwo();
 })
 
 clearButton.addEventListener('click', function() {
@@ -167,8 +195,5 @@ resetButton.addEventListener('click', function() {
   clearInputs();
   RandomNum(1,100);
   console.log(magicNum);
-})
-
-
-
+  })
 
