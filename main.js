@@ -31,6 +31,7 @@ var maxRangeError = document.querySelector(".max-range-error-message");
 
 var playerOneGuessOutside = document.querySelector(".player-one-guess-outside");
 var playerTwoGuessOutside = document.querySelector(".player-two-guess-outside");
+var winnerCard = document.querySelector(".win-card");
 
 function RandomNum(x,y) {
   // magicNum = Math.floor(Math.random() * (y - x + 1) + x);
@@ -98,6 +99,22 @@ function startGame(p1input,p1guess,p2input,p2guess) {
     playerOneCompass.innerText = "that's too high";
   } else if (parseInt(p1guess) === magicNum) {
     playerOneCompass.innerText = "BOOM!";
+    winnerCard.innerHTML = `<div class="versus-container">
+    <span class="challenger-one">CHALLENGER 1 NAME</span>
+    <p class="versus">VS</p>
+    <span class="challenger-two">CHALLENGER 2 NAME</span>
+  </div>
+ <div class="c-border"></div>
+ <div class="winner-container">
+   <strong class="challenger-winner">CHALLENGER WINNER NAME</strong>
+   <span class="winner">WINNER</span>
+ </div>
+ <div class="c-border"></div>
+ <footer>
+   <span class="guesses"><strong class=guessNum>000</strong>GUESSES</span>
+   <span class="time"><strong class="minutes">0.0</strong> MINUTES</span>
+   <button type="button" class="x-button">&#10005;</button>
+ </footer>`;
   };
   if (parseInt(p2guess) < magicNum) {
     playerTwoCompass.innerText = "that's too low";
@@ -105,9 +122,26 @@ function startGame(p1input,p1guess,p2input,p2guess) {
     playerTwoCompass.innerText = "that's too high";
   } else if (parseInt(p2guess) === magicNum) {
     playerTwoCompass.innerText = "BOOM!";
+    winnerCard.innerHTML += `<div class="versus-container">
+    <span class="challenger-one">CHALLENGER 1 NAME</span>
+    <p class="versus">VS</p>
+    <span class="challenger-two">CHALLENGER 2 NAME</span>
+  </div>
+ <div class="c-border"></div>
+ <div class="winner-container">
+   <strong class="challenger-winner">CHALLENGER WINNER NAME</strong>
+   <span class="winner">WINNER</span>
+ </div>
+ <div class="c-border"></div>
+ <footer>
+   <span class="guesses"><strong class=guessNum>000</strong>GUESSES</span>
+   <span class="time"><strong class="minutes">0.0</strong> MINUTES</span>
+   <button type="button" class="x-button">&#10005;</button>
+ </footer>`;
   };
+
   if (playerOneCompass.innerText == "BOOM!") {
-    createWinCard(playerOneInput.value);
+    createWinCard(playerOneInput.value)
   } else if (playerTwoCompass.innerText == "BOOM!") {
     createWinCard(playerTwoInput.value);
   } else if (playerOneCompass.innerText == "BOOM!" && playerTwoCompass.innerText == "BOOM!") {
@@ -174,3 +208,5 @@ resetButton.addEventListener('click', function() {
   console.log(magicNum);
   })
 
+  
+  
