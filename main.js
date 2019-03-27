@@ -31,10 +31,10 @@ var maxRangeError = document.querySelector(".max-range-error-message");
 
 var playerOneGuessOutside = document.querySelector(".player-one-guess-outside");
 var playerTwoGuessOutside = document.querySelector(".player-two-guess-outside");
+var winnerCard = document.querySelector(".win-card");
 
 function RandomNum(x,y) {
   // magicNum = Math.floor(Math.random() * (y - x + 1) + x);
-  
   magicNum = Math.floor((Math.random() * y) + x);
   console.log('hello', magicNum);
 }
@@ -44,8 +44,9 @@ function setRange() {
   var integerMax = parseInt(maxRangeInput.value);
   var regex = /^[0-9]+$/;
   var xx = minRangeInput.value;
-  var numberCheckerMin = xx.match(regex);
   var yy = maxRangeInput.value;
+  var regex = /^[0-9]+$/;
+  var numberCheckerMin = xx.match(regex);
   var numberCheckerMax = yy.match(regex);
   RandomNum(integerMin,integerMax);
   setMinRange.innerText = numberCheckerMin;
@@ -53,7 +54,33 @@ function setRange() {
   // minRangeErrorMessage();
   // maxRangeErrorMessage();
   console.log('work', magicNum)
+  console.log(magicNum);
+  setMinRange.innerText = xx;
+  setMaxRange.innerText = yy;
+  minRangeErrorMessage();
+  maxRangeErrorMessage();
+  console.log(magicNum);
 }
+
+function minRangeErrorMessage() {
+  console.log('function firing!!')
+  if (parseInt(minRangeInput.value) > parseInt(maxRangeInput.value) ) {
+    minRangeError.innerText = 'Error: Minimum needs to be less than maximum!';
+  } else {
+    minRangeError.innerText = '';
+  }
+}
+
+function maxRangeErrorMessage() {
+  console.log('function firing!!')
+  if (parseInt(minRangeInput.value) > parseInt(maxRangeInput.value) ){
+    maxRangeError.innerText = 'Error: Maximum needs to be more than minimum!';
+  } else {
+    maxRangeError.innerText = ''; 
+  }
+}
+
+
 
 function clearInputs() {
   for (i = 0; i < document.querySelectorAll('form').length; i++) {
@@ -61,39 +88,74 @@ function clearInputs() {
   }
 }
 
-function startGame(x,xx,y,yy) {
-  var playerOneErrorMessage = document.querySelector('#compass-one');
-  var playerTwoErrorMessage = document.querySelector('#compass-two');
+function startGame(p1input,p1guess,p2input,p2guess) {
+  var playerOneCompass = document.querySelector('#compass-one');
+  var playerTwoCompass = document.querySelector('#compass-two');
   for (i = 0; i < challengerOneTags.length; i++) {
-    challengerOneTags[i].innerText = x;
+    challengerOneTags[i].innerText = p1input;
   };
   for (i = 0; i < challengerTwoTags.length; i++) {
-    challengerTwoTags[i].innerText = y;
+    challengerTwoTags[i].innerText = p2input;
   };
-  playerOneResult.innerText = xx;
-  playerTwoResult.innerText = yy;
-  if (parseInt(xx) < magicNum) {
-    playerOneErrorMessage.innerText = "that's too low";
-  } else if (parseInt(xx) > magicNum) {
-    playerOneErrorMessage.innerText = "that's too high";
-  } else if (parseInt(xx) === magicNum) {
-    playerOneErrorMessage.innerText = "BOOM!";
+  playerOneResult.innerText = p1guess;
+  playerTwoResult.innerText = p2guess;
+  if (parseInt(p1guess) < magicNum) {
+    playerOneCompass.innerText = "that's too low";
+  } else if (parseInt(p1guess) > magicNum) {
+    playerOneCompass.innerText = "that's too high";
+  } else if (parseInt(p1guess) === magicNum) {
+    playerOneCompass.innerText = "BOOM!";
+    winnerCard.innerHTML = `<div class="versus-container">
+    <span class="challenger-one">CHALLENGER 1 NAME</span>
+    <p class="versus">VS</p>
+    <span class="challenger-two">CHALLENGER 2 NAME</span>
+  </div>
+ <div class="c-border"></div>
+ <div class="winner-container">
+   <strong class="challenger-winner">CHALLENGER WINNER NAME</strong>
+   <span class="winner">WINNER</span>
+ </div>
+ <div class="c-border"></div>
+ <footer>
+   <span class="guesses"><strong class=guessNum>000</strong>GUESSES</span>
+   <span class="time"><strong class="minutes">0.0</strong> MINUTES</span>
+   <button type="button" class="x-button">&#10005;</button>
+ </footer>`;
   };
-  if (parseInt(yy) < magicNum) {
-    playerTwoErrorMessage.innerText = "that's too low";
-  } else if (parseInt(yy) > magicNum) {
-    playerTwoErrorMessage.innerText = "that's too high";
-  } else if (parseInt(yy) === magicNum) {
-    playerTwoErrorMessage.innerText = "BOOM!";
+  if (parseInt(p2guess) < magicNum) {
+    playerTwoCompass.innerText = "that's too low";
+  } else if (parseInt(p2guess) > magicNum) {
+    playerTwoCompass.innerText = "that's too high";
+  } else if (parseInt(p2guess) === magicNum) {
+    playerTwoCompass.innerText = "BOOM!";
+    winnerCard.innerHTML += `<div class="versus-container">
+    <span class="challenger-one">CHALLENGER 1 NAME</span>
+    <p class="versus">VS</p>
+    <span class="challenger-two">CHALLENGER 2 NAME</span>
+  </div>
+ <div class="c-border"></div>
+ <div class="winner-container">
+   <strong class="challenger-winner">CHALLENGER WINNER NAME</strong>
+   <span class="winner">WINNER</span>
+ </div>
+ <div class="c-border"></div>
+ <footer>
+   <span class="guesses"><strong class=guessNum>000</strong>GUESSES</span>
+   <span class="time"><strong class="minutes">0.0</strong> MINUTES</span>
+   <button type="button" class="x-button">&#10005;</button>
+ </footer>`;
   };
-  if (playerOneErrorMessage.innerText == "BOOM!") {
-    createWinCard(playerOneInput.value);
-  } else if (playerTwoErrorMessage.innerText == "BOOM!") {
+
+
+  if (playerOneCompass.innerText == "BOOM!") {
+    createWinCard(playerOneInput.value)
+  } else if (playerTwoCompass.innerText == "BOOM!") {
     createWinCard(playerTwoInput.value);
-  } else if (playerOneErrorMessage.innerText == "BOOM!" && playerTwoErrorMessage.innerText == "BOOM!") {
+  } else if (playerOneCompass.innerText == "BOOM!" && playerTwoCompass.innerText == "BOOM!") {
     noContest();
   }
 }
+
 
 function minRangeErrorMessage() {
   console.log('function firing!!')
@@ -115,10 +177,19 @@ function maxRangeErrorMessage() {
 
 function outsideRangeOne() {
   if (parseInt(playerOneGuess.value) < parseInt(minRangeInput.value) ){
+  
+  
+
+function outsideRangeOne() {
+    var pOneGuess = parseInt(playerOneGuess.value);
+    var minInputInt = parseInt(minRangeInput.value);
+    var maxInputInt = parseInt(maxRangeInput.value);
+  if (pOneGuess < minInputInt || pOneGuess > maxInputInt){
     playerOneGuessOutside.innerText = 'Error: Number must be within range!';
   }else {
     playerOneGuessOutside.innerText = '';
   }
+
   if (parseInt(playerOneGuess.value) > parseInt(maxRangeInput.value) ){
     playerOneGuessOutside.innerText = 'Error: Number must be within range!';
   }else 
@@ -127,6 +198,13 @@ function outsideRangeOne() {
 
 function outsideRangeTwo() {
   if (parseInt(playerTwoGuess.value) < parseInt(minRangeInput.value) ){
+  }
+
+function outsideRangeTwo() {
+  var pTwoGuess = parseInt(playerTwoGuess.value);
+    var minInputInt = parseInt(minRangeInput.value);
+    var maxInputInt = parseInt(maxRangeInput.value);
+  if (pTwoGuess < minInputInt || pTwoGuess > maxInputInt){
     playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
   }else {
     playerTwoGuessOutside.innerText = '';
@@ -138,6 +216,7 @@ function outsideRangeTwo() {
 }
 
 // // -- Event Listeners
+
 
 updateButton.addEventListener('click', setRange)
 
@@ -170,5 +249,4 @@ resetButton.addEventListener('click', function() {
   clearInputs();
   RandomNum(1,100);
   console.log(magicNum);
-  })
-
+})

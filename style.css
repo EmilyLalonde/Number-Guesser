@@ -251,4 +251,8 @@ a {
       float: right;
       width: 50%;
     }
+    .game-buttons {
+      flex-direction: row;
+    }
+
 }
