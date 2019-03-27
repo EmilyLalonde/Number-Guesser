@@ -4,61 +4,88 @@ var magicNum;
 
 var minRangeInput = document.querySelector('#min-range-input');
 var maxRangeInput = document.querySelector('#max-range-input');
-
 var updateButton = document.querySelector('#update-button');
-
 var setMinRange = document.querySelector('#min-range');
 var setMaxRange = document.querySelector('#max-range');
-
 var submitButton = document.querySelector('#submit-button');
 var clearButton = document.querySelector('#clear-button');
 var resetButton = document.querySelector('#reset-button');
-
 var challengerOneTags = document.querySelectorAll('.challenger-one');
 var challengerTwoTags = document.querySelectorAll('.challenger-two');
-
 var playerOneResult = document.querySelector('#player-one-score');
 var playerTwoResult = document.querySelector('#player-two-score');
-
 var playerOneInput = document.querySelector('#player-one-input');
 var playerTwoInput = document.querySelector('#player-two-input');
-
 var playerOneGuess = document.querySelector('#guess-one-input');
 var playerTwoGuess = document.querySelector('#guess-two-input');
-
 var minRangeError = document.querySelector(".min-range-error-message");
 var maxRangeError = document.querySelector(".max-range-error-message");
-
 var playerOneGuessOutside = document.querySelector(".player-one-guess-outside");
 var playerTwoGuessOutside = document.querySelector(".player-two-guess-outside");
 
+var integerMin = parseInt(minRangeInput.value);
+var integerMax = parseInt(maxRangeInput.value);
+//Random Number Generator
 function RandomNum(x,y) {
-  // magicNum = Math.floor(Math.random() * (y - x + 1) + x);
-  magicNum = Math.floor((Math.random() * y) + x);
-  console.log('hello', magicNum);
+  magicNum = Math.floor(Math.random() * (y - x + 1) + x);
 }
 
+if (magicNum === undefined) {
+  RandomNum(1,100);
+}
+
+var minRangeInt = parseInt(setMinRange.innerText);
+var maxRangeInt = parseInt(setMaxRange.innerText);
+console.log("start min range is " + minRangeInt);
+console.log("start max range is " + maxRangeInt);
+console.log("start random number is " + magicNum);
+
+
+
+//Set Range Section
+
 function setRange() {
-  var integerMin = parseInt(minRangeInput.value);
-  var integerMax = parseInt(maxRangeInput.value)
   var regex = /^[0-9]+$/;
   var xx = minRangeInput.value;
   var yy = maxRangeInput.value;
   var regex = /^[0-9]+$/;
   var numberCheckerMin = xx.match(regex);
   var numberCheckerMax = yy.match(regex);
-  RandomNum(integerMin,integerMax);
-  console.log(magicNum);
   setMinRange.innerText = xx;
   setMaxRange.innerText = yy;
+  RandomNum(parseInt(setMinRange.innerText),parseInt(setMaxRange.innerText));
   minRangeErrorMessage();
   maxRangeErrorMessage();
-  console.log(magicNum);
+  console.log(`range set from ${setMinRange.innerText} to ${setMaxRange.innerText}`);
+  console.log(`the random number is now ${magicNum}`)
+  updateButton.disabled = true;
 }
 
+function checkForm() {
+  var rangeForms = document.querySelectorAll('.ranger');
+  var gameInputs = document.querySelectorAll('.game-inputs')
+  var canSubmit = true;
+  var gameSubmit = true;
+  for (var i = 0; i < rangeForms.length; i++) {
+    if (rangeForms[i].value.length == 0) canSubmit = false;
+  }
+  for (var i = 0; i < gameInputs.length; i++) {
+    if (gameInputs[i].value.length !== 0) gameSubmit = true;
+  }
+  if (canSubmit) {
+    updateButton.disabled = false;
+  }
+  if (gameSubmit) {
+    clearButton.disabled = false;
+    resetButton.disabled = false;
+  }
+}
+
+
 function minRangeErrorMessage() {
-  console.log('function firing!!')
+  console.log('checking minRange for error')
   if (parseInt(minRangeInput.value) > parseInt(maxRangeInput.value) ) {
+    console.log("minRange error triggered");
     minRangeError.innerText = 'Error: Minimum needs to be less than maximum!';
   } else {
     minRangeError.innerText = '';
@@ -66,13 +93,19 @@ function minRangeErrorMessage() {
 }
 
 function maxRangeErrorMessage() {
-  console.log('function firing!!')
+  console.log('checking maxRange for error')
   if (parseInt(minRangeInput.value) > parseInt(maxRangeInput.value) ){
+    console.log("maxRange error triggered");
     maxRangeError.innerText = 'Error: Maximum needs to be more than minimum!';
   } else {
     maxRangeError.innerText = ''; 
   }
 }
+
+// Game Section
+
+//input guard 
+
 
 
 function clearInputs() {
@@ -84,6 +117,14 @@ function clearInputs() {
 function startGame(p1input,p1guess,p2input,p2guess) {
   var playerOneCompass = document.querySelector('#compass-one');
   var playerTwoCompass = document.querySelector('#compass-two');
+  console.log(minRangeInt);
+  console.log(maxRangeInt);
+  console.log(parseInt(playerOneGuess.value));
+  if (playerOneGuess.value < minRangeInt || playerOneGuess > maxRangeInt || playerTwoGuess.value < minRangeInt || playerTwoGuess.value > maxRangeInt) {
+    console.log("error check working");
+    outsideRangeOne();
+    outsideRangeTwo();
+  }
   for (i = 0; i < challengerOneTags.length; i++) {
     challengerOneTags[i].innerText = p1input;
   };
@@ -153,7 +194,8 @@ submitButton.addEventListener('click', function() {
 clearButton.addEventListener('click', function() {
   for (i=0; i < document.querySelectorAll('form').length; i++) {
   document.querySelectorAll('form')[i].reset();
-};
+  }
+  clearButton.disabled = true;
 })
 
 resetButton.addEventListener('click', function() {
@@ -172,5 +214,6 @@ resetButton.addEventListener('click', function() {
   clearInputs();
   RandomNum(1,100);
   console.log(magicNum);
+  resetButton.disabled = true;
   })
 
