@@ -1,5 +1,5 @@
 # Number-Guesser!
-###Partner Project
+### Partner Project
 
 In this project our objective was to create a number guesser game that came as close as possible to the comp provided. In this project we developed greater HTML, CSS, and JavaScript skills. In this game two users can play a number guessing game where they enter their guess, a card displays whether the guess is too high, too low, or correct, and then a winner card is generated for the player who guesses correct. We completed most aspects of Phases 1-3.
 
