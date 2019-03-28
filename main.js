@@ -111,8 +111,14 @@ function startGame(p1input,p1guess,p2input,p2guess) {
   var playerTwoCompass = document.querySelector('#compass-two');
   var pOneGuess = parseInt(playerOneGuess.value);
   var pTwoGuess = parseInt(playerTwoGuess.value);
+    console.log(pOneGuess);
+    console.log(minRangeInt);
+  if (playerOneGuess.value === "" || playerTwoGuess.value === "") {
+    playerOneGuessOutside.innerText = "You must guess a number!";
+    playerTwoGuessOutside.innerText = "You must guess a number!";
+  } else {
   if (pOneGuess < minRangeInt || pOneGuess > maxRangeInt || pTwoGuess < minRangeInt || pTwoGuess > maxRangeInt) {
-    console.log("error check working");
+    console.log("error check true");
     outsideRangeError();
   } else {
     playerOneGuessOutside.innerText = "";
@@ -148,7 +154,7 @@ function startGame(p1input,p1guess,p2input,p2guess) {
     noContest();
   }
 }
-
+}
 
 function outsideRangeError() {
     var pOneGuess = parseInt(playerOneGuess.value);
