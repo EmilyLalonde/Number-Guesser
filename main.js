@@ -245,4 +245,9 @@ resetButton.addEventListener('click', function() {
   })
 
   
-  
+  winnerCard.addEventListener('click', function (e){
+ if(event.target.className === 'x-button') {
+   event.target.parentNode.parentNode.remove();
+
+ }
+});
