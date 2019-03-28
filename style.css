@@ -81,7 +81,6 @@ header h5 {
   flex-direction:row;
   align-items:center;
   margin:0;
-  font-size:11px;
 
 }
 
@@ -252,4 +251,8 @@ a {
       float: right;
       width: 50%;
     }
+    .game-buttons {
+      flex-direction: row;
+    }
+
 }

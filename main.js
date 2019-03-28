@@ -23,6 +23,8 @@ var playerOneGuessOutside = document.querySelector(".player-one-guess-outside");
 var playerTwoGuessOutside = document.querySelector(".player-two-guess-outside");
 var integerMin = parseInt(minRangeInput.value);
 var integerMax = parseInt(maxRangeInput.value);
+var winnerCard = document.querySelector("#scoreboard");
+
 
 //Random Number Generator
 function RandomNum(x,y) {
@@ -33,10 +35,10 @@ if (magicNum === undefined) {
   RandomNum(1,100);
 }
 
-var minRangeInt = parseInt(setMinRange.innerText);
-var maxRangeInt = parseInt(setMaxRange.innerText);
-console.log("start min range is " + minRangeInt);
-console.log("start max range is " + maxRangeInt);
+var minRangeStart = parseInt(setMinRange.innerText);
+var maxRangeStart = parseInt(setMaxRange.innerText);
+console.log("start min range is " + minRangeStart);
+console.log("start max range is " + maxRangeStart);
 console.log("start random number is " + magicNum);
 
 
@@ -77,7 +79,6 @@ function checkForm() {
   }
 }
 
-
 function rangeErrorMessage() {
   console.log('checking range for error');
   console.log(parseInt(minRangeInput.value), parseInt(maxRangeInput.value));
@@ -111,13 +112,20 @@ function startGame(p1input,p1guess,p2input,p2guess) {
   var playerTwoCompass = document.querySelector('#compass-two');
   var pOneGuess = parseInt(playerOneGuess.value);
   var pTwoGuess = parseInt(playerTwoGuess.value);
+  var minRangeInt = parseInt(setMinRange.innerText);
+  var maxRangeInt = parseInt(setMaxRange.innerText);
     console.log(pOneGuess);
     console.log(minRangeInt);
   if (playerOneGuess.value === "" || playerTwoGuess.value === "") {
     playerOneGuessOutside.innerText = "You must guess a number!";
     playerTwoGuessOutside.innerText = "You must guess a number!";
   } else {
-  if (pOneGuess < minRangeInt || pOneGuess > maxRangeInt || pTwoGuess < minRangeInt || pTwoGuess > maxRangeInt) {
+    console.log(minRangeInt,maxRangeInt);
+    console.log(pOneGuess,pTwoGuess)
+  if (pOneGuess < minRangeInt || pOneGuess > maxRangeInt) {
+    console.log("error check true");
+    outsideRangeError();
+  } else if (pTwoGuess < minRangeInt || pTwoGuess > maxRangeInt) {
     console.log("error check true");
     outsideRangeError();
   } else {
@@ -137,21 +145,59 @@ function startGame(p1input,p1guess,p2input,p2guess) {
   } else if (parseInt(p1guess) > magicNum) {
     playerOneCompass.innerText = "that's too high";
   } else if (parseInt(p1guess) === magicNum) {
+    RandomNum(parseInt(setMinRange.innerText),parseInt(setMaxRange.innerText));
+    console.log("new random number is " + magicNum);
     playerOneCompass.innerText = "BOOM!";
+    winnerCard.innerHTML = `<section class="win-card">
+    <div class="versus-container">
+    <span class="challenger-one">${playerOneInput.value}</span>
+    <p class="versus">VS</p>
+    <span class="challenger-two">${playerTwoInput.value}</span>
+  </div>
+ <div class="c-border"></div>
+ <div class="winner-container">
+   <strong class="challenger-winner">${playerOneInput.value}</strong>
+   <span class="winner">WINNER</span>
+ </div>
+ <div class="c-border"></div>
+ <footer>
+   <span class="guesses"><strong class=guessNum>000</strong>GUESSES</span>
+   <span class="time"><strong class="minutes">0.0</strong> MINUTES</span>
+   <button type="button" class="x-button">&#10005;</button>
+ </footer></section>`;
   };
   if (parseInt(p2guess) < magicNum) {
     playerTwoCompass.innerText = "that's too low";
   } else if (parseInt(p2guess) > magicNum) {
     playerTwoCompass.innerText = "that's too high";
   } else if (parseInt(p2guess) === magicNum) {
+    RandomNum(parseInt(setMinRange.innerText),parseInt(setMaxRange.innerText));
+    console.log("new random number is " + magicNum);
     playerTwoCompass.innerText = "BOOM!";
+    winnerCard.innerHTML += `<section class="win-card">
+    <div class="versus-container">
+    <span class="challenger-one">${playerOneInput.value}</span>
+    <p class="versus">VS</p>
+    <span class="challenger-two">${playerTwoInput.value}</span>
+  </div>
+ <div class="c-border"></div>
+ <div class="winner-container">
+   <strong class="challenger-winner">${playerTwoInput.value}</strong>
+   <span class="winner">WINNER</span>
+ </div>
+ <div class="c-border"></div>
+ <footer>
+   <span class="guesses"><strong class=guessNum>000</strong>GUESSES</span>
+   <span class="time"><strong class="minutes">0.0</strong> MINUTES</span>
+   <button type="button" class="x-button">&#10005;</button>
+ </footer></section>`;
   };
   if (playerOneCompass.innerText == "BOOM!") {
-    createWinCard(playerOneInput.value);
+    // createWinCard(playerOneInput.value)
   } else if (playerTwoCompass.innerText == "BOOM!") {
-    createWinCard(playerTwoInput.value);
+    // createWinCard(playerTwoInput.value);
   } else if (playerOneCompass.innerText == "BOOM!" && playerTwoCompass.innerText == "BOOM!") {
-    noContest();
+    // noContest();
   }
 }
 }
@@ -164,8 +210,8 @@ function outsideRangeError() {
     playerTwoGuessOutside.innerText = 'Error: Number must be within range!';
 }
 
-// // -- Event Listeners
 
+// // -- Event Listeners
 
 updateButton.addEventListener('click', setRange)
 
@@ -198,3 +244,5 @@ resetButton.addEventListener('click', function() {
   resetButton.disabled = true;
   })
 
+  
+  
