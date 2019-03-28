@@ -10,6 +10,7 @@ In phase 1 we managed to get the game visually comparable to the comp and respon
 In phase 2 we made sure that the range and guess inputs only accepted numerical values. We also designed error messages to display whenever an input was invalid.
 
 ### Phase 3:
+
 In phase 3 we were able to get a winer card to display once a player guessed the correct number. The card displays the winners name and who they challanged. These cards can also be removed when the circular X button is clicked.
 
 Below are visual examples of our project vs the comp:
@@ -18,3 +19,12 @@ Below are visual examples of our project vs the comp:
 
 
 ![mobilePage](https://raw.githubusercontent.com/EmilyLalonde/Number-Guesser/vinton-work/images/mobile-numguesser.jpg) 
+
+In phase 3 we were able to get a winer card to display once a player guessed the correct number. The card displays the winners name and who they challanged. These cards can also be removed when the circular X button is clicked. 
+
+Below are visual examples of our project vs the comp:
+
+(our desktop version)
+
+(our mobile version)
+
